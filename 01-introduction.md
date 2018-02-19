@@ -1,16 +1,3 @@
----
-title: Integer Spiral Sillines
-subtitle: A report
-author: Andrew Shaw <shawa1@tcd.ie>
-date: \today
-abstract: |
-  We present a coordinate space for addressing elements on the Integer Spiral
-  which is rotationally symmertric $90\deg$ about the origin. We develop and
-  present useful supporting formulae, in terms of some integer $n$, for computing
-  the coordinates of $n$ in this space, with a view to computing the $\ell_1$
-  (taxicab) distance from $n$ to the origin.
-...
-
 # Introduction
 We define a Spiral over some ordered set $S$ to be an arrangement of the
 elements of $S$ in an $N \times N$ grid - where $N$ is odd - such that the least

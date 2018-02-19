@@ -115,3 +115,14 @@ did someone() {
 * Good! How about a table of contents?
     - `pandoc --table-of-contents --number-sections -o report.pdf report.md`
 * Even better!
+
+
+## The Report Evolves
+* The report is growing and growing.
+* Like we break a program into modules. We break the report into chapters
+* _A file for everything, and everything in its file_
+    - A file for each chapter, prefixed with the chapter number
+* The metadata should go in its own file right?
+    - `pandoc --table-of-contents --number-sections -o report.pdf 01-introduction.md 02-maths.md metadata.yml`
+* This is getting a bit unwieldy...
+    - Good luck remembering that
