@@ -1,0 +1,28 @@
+* Using ~pandoc~ to make documents
+* Intro to Markdown
+** Syntax overview
+** Write a sample really simple document in markdown
+** Metadata block
+** Abstract
+** Section
+** Subsection
+** Codeblock
+** Some math?
+** Embedded image?
+** Footnotes
+* What is Pandoc
+** Big picture of all of the formats it supports
+** Detour into C compilation etc
+** Compile the document into a PDF
+** Incrementally add more features (toc, number sections)
+** Move the meta block into own file
+** Compile all of the things with all of the command line arguments required to do it (showing how cumbersome it is, especially with multiple files)
+** Write a shell script to remember all of the things
+
+* What is Make
+** Dependency graph tracker
+** Write a make file for the document
+** Targets, Dependencies, PHONY
+
+* Bonus shit
+** when-changed
