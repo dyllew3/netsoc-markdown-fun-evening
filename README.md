@@ -217,3 +217,55 @@ clean:
 	rm -f dist/*
 
 ```
+
+# Extra bits
+
+## Citations
+* Citations are an absolute nightmare in general
+* A citation is basically an `href` for the real world
+* Pandoc makes this somewhat easy, requires `pandoc-citeproc` installed
+* Structure `->` easy to customise
+
+## Bibliography
+* You put all of your references in a bibliography file
+  - normally in `bibTeX` format
+* Tell Pandoc where to find the bibfile
+* Reference your citations in the document
+
+
+## Automatic Change Monitoring
+* `when-changed` is a Python tool for watching for filesystem changes and running a command in response
+* e.g. Rebuilding your report when you save
+* `when-changed -r src meta media -c make`
+    - `-r`ecursively watch `src`, `meta`, and `media`
+    - and when they change, run the `-c`ommand `make`
+
+
+## Caveats
+### File Extensions
+* File paths are relative to _where you run pandoc, not where the file is_
+    - in practice, relative to the makefile.
+
+* e.g. if our directory looks like this
+
+    ```
+    ├── README.md
+    ├── media
+    │   └── lobster.png
+    ...
+    └── src
+        ├── 01-introduction.md
+        ├── 02-maths.md
+        ├── 03-a-diagram.md
+        └── 04-Turboencabulators.md
+    ```
+
+* Include media in the chapters as `media/file.ext`
+
+* check out org mode
+
+## That is basically it
+* This whole thing is on Github at `https://github.com/shawa/netsoc-talk`
+* Contact me if you have questions <shawa1@tcd.ie>
+    - `shawa1@tcd.ie`, `twitter.com/shawa_a`, `shawa@mastodon.social`
+    - open an issue on the github repo!
