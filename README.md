@@ -126,3 +126,94 @@ did someone() {
     - `pandoc --table-of-contents --number-sections -o report.pdf 01-introduction.md 02-maths.md metadata.yml`
 * This is getting a bit unwieldy...
     - Good luck remembering that
+
+
+# `Make`ing our lives easier
+* We are adding more chapters and media to our report
+    - ``![caption](path/to/image.png)`
+
+## Detour: Dependency graphs
+* If we're writing a big program, we end up with dedpendencies
+* e.g. a Systems Programming assignment, we may have
+  - `main.c`
+  - `linked-list.{c,h}`
+  - `huffman-tree.{c,h}`
+
+A simple dependency graph would be
+
+```
+main.c
+  |- `linked-list.{c,h}`
+  |
+  .- `huffman-tree.{c,h}`
+```
+
+* Main depends on both our linked list and our Huffman tree implementation
+* If we modify either of those, we have to recompile main.
+* BUT: If we _only_ modify `main`, we only have to recompile main!
+
+There is a tool for modeling this, and its name is make.
+
+## Makefiles
+
+* A `Makefile` is a description of your project's dependency graph
+* As well as instructions for how to build it
+    - What compiler to use, what flags to pass to the compiler
+* source files, objects, targets, and dependencies
+* Tracks when files change, knows how much (or how little) needs to be recompiled
+
+
+
+```makefile
+CFLAGS = -std=c99 -Wall
+CCOMP = gcc
+
+huff_codec: huff_codec.c
+	$(CCOMP) $(CFLAGS) -g -o huff_codec.o huff_codec.c bitfile.c huffman_tree.c
+
+link:
+	ln -s huff_codec.o huffcode
+	ln -s huff_codec.o huffdecode
+
+test_bitfile: test_bitfile.c
+	$(CCOMP) $(CFLAGS) -g -o test_bitfile.o test_bitfile.c
+
+test_bit_array: test_bit_array.c
+	$(CCOMP) $(CFLAGS) -g -o test_bit_array.o test_bit_array.c
+
+
+bitfile.o: bitfile.c
+	$(CCOMP) $(CFLAGS) -o bitfile.o bitfile.c
+
+.PHONY: clean
+
+clean:
+	rm -rf *.o *.html *.pdf *.dSYM *.bf
+```
+
+## Making the Report
+
+* Just like our program, our report has source files
+  - the chapters
+  - the meta file
+
+* It has objects
+  - media (images)
+
+* It has dependencies
+  - a chapter might include an image
+
+* Most importantly, it has a target (the PDF!)
+
+```makefile
+PANDOC_FLAGS:= --number-sections --table-of-contents
+
+dist/report.pdf: media meta src
+	pandoc $(PANDOC_FLAGS) -o $@ $(shell ls src/*.md) meta/metadata.yml
+
+.PHONY: clean
+
+clean:
+	rm -f dist/*
+
+```
