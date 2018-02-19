@@ -43,7 +43,8 @@ Andrew Shaw: shawa1@tcd.ie
     - How hubristic to think I know how to lay out a document
 
 
-## Why Markdown?
+## Why Mar## BONUS SHIT:
+kdown?
 
 * Non-proprietary is not just a _**lol the FSF**_ joke
     - If the vendor discontinues your WYSIWYG, you can't open your docs
@@ -69,3 +70,48 @@ did someone() {
 > Yes!  
 
 # Lets Go!
+
+## Step Zero
+
+* The first step is to get the tools installed
+  - It actually depends on LaTeX lol
+
+* OSX
+    - `brew cask install mactex && brew install pandoc`
+* Debian
+    - `apt install pandoc`
+* Windows
+    - I don't know! Submit a PR! :)
+
+
+# Simple beginnings
+
+* For simple `C` programs, it usually suffices to just run the compiler
+    - `gcc -o program program.c other_thing.c`
+
+* Exactly the same for simple documents.
+    - `pandoc -o report.pdf report.md`
+
+## Detour: Metadata
+* Data about the document, author, date, etc.
+* Ready by Pandoc to give you a nice heading
+* YAML block put right at the top
+
+    ```yaml
+    ---
+    author: Andrew Shaw <shawa1@tcd.ie>
+    title: Why Haskell is Really Good
+    subtitle: Lambda Calculus > Turing Machines
+    date: \today
+    ...
+    ```
+
+
+## Upgrade!
+* We've got our prose written, (and _structured_!)
+* Other embellishments are independent of what we've written.
+* Lets add numbers to the sections
+    - `pandoc --number-sections -o report.pdf report.md`
+* Good! How about a table of contents?
+    - `pandoc --table-of-contents --number-sections -o report.pdf report.md`
+* Even better!
