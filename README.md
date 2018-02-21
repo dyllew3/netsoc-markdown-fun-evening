@@ -43,8 +43,7 @@ Andrew Shaw: shawa1@tcd.ie
     - How hubristic to think I know how to lay out a document
 
 
-## Why Mar## BONUS SHIT:
-kdown?
+## Why Markdown?
 
 * Non-proprietary is not just a _**lol the FSF**_ joke
     - If the vendor discontinues your WYSIWYG, you can't open your docs
